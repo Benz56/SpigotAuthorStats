@@ -1,0 +1,24 @@
+{
+  "name": "Spigot Author Stats",
+  "version": "1.0.0",
+  "description": "Shows information about Spigot authors on their resource page.",
+  "permissions": [
+    "https://www.spigotmc.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.spigotmc.org/resources/authors/*/",
+        "https://www.spigotmc.org/resources/authors/*/*",
+        "https://www.spigotmc.org/members/*/"
+      ],
+      "js": [
+        "table.js",
+        "logic.js",
+        "authorStats.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "manifest_version": 2
+}

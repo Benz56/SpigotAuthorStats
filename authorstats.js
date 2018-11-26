@@ -3,7 +3,7 @@ const element = document.querySelector(isProfilePage ? "#ProfilePanes" : ".mainC
 
 const table = document.createElement("div");
 table.innerHTML = statsTable;
-table.querySelector("#author").innerHTML += isProfilePage ? document.querySelector(".style18").textContent : element.querySelector(".titleBar").textContent.split(" ")[2];
+table.querySelector("#author").innerHTML += isProfilePage ? document.querySelector(".secondaryContent h1").textContent : element.querySelector(".titleBar").textContent.split(" ")[2];
 console.log(isProfilePage);
 let isLoaded = false;
 if (isProfilePage) {

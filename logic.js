@@ -27,7 +27,6 @@ function loadStats(isProfilePage) {
 let loadedPages = 0;
 
 function scanPage(pageHTML) {
-
     const resources = pageHTML.querySelectorAll(".resourceListItem");
     for (let i = 0; i < resources.length; i++) {
         let resource = resources[i];

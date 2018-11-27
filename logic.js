@@ -1,4 +1,5 @@
-let resources, pageCount, downloads = 0, ratings = 0;
+let resources, pageCount, totalDownloads, normalDownloads, premiumDownloads, downloadRatio, ratings;
+totalDownloads = normalDownloads = premiumDownloads = ratings = 0;
 
 function loadStats(isProfilePage) {
     if (isProfilePage) {
@@ -30,9 +31,17 @@ function scanPage(pageHTML) {
     const resources = pageHTML.querySelectorAll(".resourceListItem");
     for (let i = 0; i < resources.length; i++) {
         let resource = resources[i];
-        downloads += parseInt(resource.querySelector(".resourceDownloads").textContent.split(" ")[1].replace(",", ""));
-        ratings += parseInt(resource.querySelector(".Hint").textContent.split(" ")[0].replace(",", ""));
+        let downloads = parseInt(resource.querySelector(".resourceDownloads").textContent.split(" ")[1].replace(",", ""));
+        let premium = resource.querySelector(".cost") != null;
+        totalDownloads += downloads;
 
+        if (premium) {
+            premiumDownloads += downloads;
+        } else normalDownloads += downloads;
+
+        downloadRatio = "1 to " + (normalDownloads / premiumDownloads).toFixed(2) + " (" + ((1 - ((normalDownloads - premiumDownloads) / normalDownloads)) * 100).toFixed(2) + "%)";
+
+        ratings += parseInt(resource.querySelector(".Hint").textContent.split(" ")[0].replace(",", ""));
     }
     loadedPages++;
     setStats();
@@ -41,11 +50,14 @@ function scanPage(pageHTML) {
 
 function setStats() {
     const commaPattern = /\B(?=(\d{3})+(?!\d))/g;
-    table.querySelector("#totalDownloads").innerHTML = downloads.toString().replace(commaPattern, ",");
+    table.querySelector("#totalDownloads").innerHTML = totalDownloads.toString().replace(commaPattern, ",");
+    table.querySelector("#normalDownloads").innerHTML = normalDownloads.toString().replace(commaPattern, ",");
+    table.querySelector("#premiumDownloads").innerHTML = premiumDownloads.toString().replace(commaPattern, ",");
+    table.querySelector("#downloadRatio").innerHTML = downloadRatio;
     table.querySelector("#totalRatings").innerHTML = ratings.toString().replace(commaPattern, ",");
     document.getElementById("progressBarInner").style.width = (1 - ((pageCount - loadedPages) / pageCount)) * 100 + '%';
 }
 
 function reset() {
-    loadedPages = resources = pageCount = downloads = ratings = 0
+    loadedPages = resources = pageCount = totalDownloads = normalDownloads = premiumDownloads = ratings = 0
 }

@@ -32,11 +32,14 @@ const statsTable =
     </style>
     <table>
         <tr>
-            <td id="author" colspan="3" align="center"><b>Author: </b></td>
+            <td id="author" colspan="6" align="center"><b>Author: </b></td>
         </tr>
         <tr id="row2">
             <td>Total Resources</td>
             <td>Total Downloads</td>
+            <td>Normal Downloads</td>
+            <td>Premium Downloads</td>
+            <td>Norm/Prem Ratio</td>
             <td>Total Ratings</td>
             <!--<td>Total 5-Star Ratings</td>
             <td>Average Rating</td>-->
@@ -44,6 +47,9 @@ const statsTable =
         <tr>
             <td id="totalResources">loading...</td>
             <td id="totalDownloads">loading...</td>
+            <td id="normalDownloads">loading...</td>
+            <td id="premiumDownloads">loading...</td>
+            <td id="downloadRatio">loading...</td>
             <td id="totalRatings">loading...</td>
             <!--<td id="total5Ratings">loading...</td>
             <td id="averageRating">loading...</td>-->

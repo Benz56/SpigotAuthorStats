@@ -28,8 +28,5 @@
   "browser_action": {
     "default_icon": "icons/icon16.png"
   },
-  "web_accessible_resources": [
-    "images/pattern.png"
-  ],
   "manifest_version": 2
 }

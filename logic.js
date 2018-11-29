@@ -49,13 +49,17 @@ function scanPage(pageHTML) {
 }
 
 function setStats() {
-    const commaPattern = /\B(?=(\d{3})+(?!\d))/g;
-    table.querySelector("#totalDownloads").innerHTML = totalDownloads.toString().replace(commaPattern, ",");
-    table.querySelector("#normalDownloads").innerHTML = normalDownloads.toString().replace(commaPattern, ",");
-    table.querySelector("#premiumDownloads").innerHTML = premiumDownloads.toString().replace(commaPattern, ",");
+    table.querySelector("#totalDownloads").innerHTML = setCommas(totalDownloads);
+    table.querySelector("#normalDownloads").innerHTML = setCommas(normalDownloads);
+    table.querySelector("#premiumDownloads").innerHTML = setCommas(premiumDownloads);
     table.querySelector("#downloadRatio").innerHTML = downloadRatio;
-    table.querySelector("#totalRatings").innerHTML = ratings.toString().replace(commaPattern, ",");
+    table.querySelector("#totalRatings").innerHTML = setCommas(ratings);
     document.getElementById("progressBarInner").style.width = (1 - ((pageCount - loadedPages) / pageCount)) * 100 + '%';
+}
+
+function setCommas(number) {
+    const commaPattern = /\B(?=(\d{3})+(?!\d))/g;
+    return number.toString().replace(commaPattern, ",");
 }
 
 function reset() {

@@ -1,10 +1,15 @@
 const statsTable =
-    `<style>
+    `<style type="text/css">
         table {
             font-family: "Droid Sans", Arial, sans-serif;
-            border-collapse: collapse;
             width: 100%;
         }
+        
+        table tr:first-child {
+            background-image: linear-gradient(#f4a03c, #f38918);
+            text-shadow: 2px 2px #bfbfbf;
+            color: #FFFFFF;
+        } 
 
         td, th {
             border: 1px solid #dddddd;
@@ -12,10 +17,11 @@ const statsTable =
         }
         
         #author {
-            font-size: 22px;
+            font-size: 26px;
+            font-weight: bold;
         }
         
-        #row2 {
+        #boldRow {
             font-weight: bold;
         }
         
@@ -32,14 +38,14 @@ const statsTable =
     </style>
     <table>
         <tr>
-            <td id="author" colspan="6" align="center"><b>Author: </b></td>
+            <td id="author" colspan="6" align="center"><b></b></td>
         </tr>
-        <tr id="row2">
+        <tr id="boldRow">
             <td>Total Resources</td>
             <td>Total Downloads</td>
             <td>Normal Downloads</td>
             <td>Premium Downloads</td>
-            <td>Norm/Prem Ratio</td>
+            <td>Download Ratio</td>
             <td>Total Ratings</td>
             <!--<td>Total 5-Star Ratings</td>
             <td>Average Rating</td>-->

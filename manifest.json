@@ -1,6 +1,6 @@
 {
   "name": "Spigot Author Stats",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Displays information about Spigot authors resource statistics on their resource- and profile page.",
   "permissions": [
     "https://www.spigotmc.org/*"
@@ -28,5 +28,8 @@
   "browser_action": {
     "default_icon": "icons/icon16.png"
   },
+  "web_accessible_resources": [
+    "images/pattern.png"
+  ],
   "manifest_version": 2
 }

@@ -12,7 +12,7 @@ function loadStats(isProfilePage) {
 
     table.querySelector("#totalResources").innerHTML = resources;
 
-    pageCount = Math.ceil(resources / 20);
+    pageCount = Math.ceil(resources.replace(",", "") / 20);
 
     const baseURL = "https://www.spigotmc.org/resources/authors/" + window.location.href.substring(window.location.href.lastIndexOf("."));
     for (let pageIndex = 1; pageIndex <= pageCount; pageIndex++) {

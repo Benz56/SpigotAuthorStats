@@ -1,5 +1,6 @@
-let resources, pageCount, totalDownloads, normalDownloads, premiumDownloads, downloadRatio, ratings;
-totalDownloads = normalDownloads = premiumDownloads = ratings = 0;
+let resources, ratedResources, pageCount, totalDownloads, normalDownloads, premiumDownloads, downloadRatio, ratings,
+    avgRating;
+ratedResources = totalDownloads = normalDownloads = premiumDownloads = ratings = avgRating = 0;
 
 function loadStats(isProfilePage) {
     if (isProfilePage) {
@@ -35,17 +36,21 @@ function scanPage(pageHTML) {
         let premium = resource.querySelector(".cost") != null;
         totalDownloads += downloads;
 
+
         if (premium) {
             premiumDownloads += downloads;
         } else normalDownloads += downloads;
 
         downloadRatio = "1 to " + (normalDownloads / premiumDownloads).toFixed(2) + " (" + ((1 - ((normalDownloads - premiumDownloads) / normalDownloads)) * 100).toFixed(2) + "%)";
 
-        ratings += parseInt(resource.querySelector(".Hint").textContent.split(" ")[0].replace(",", ""));
+        let resourceRatings = parseInt(resource.querySelector(".Hint").textContent.split(" ")[0].replace(",", ""));
+        ratedResources += resourceRatings === 0 ? 0 : 1;
+        ratings += resourceRatings;
+        let rating = parseFloat(resource.querySelector(".ratings").getAttribute("title"));
+        avgRating += rating;
     }
     loadedPages++;
     setStats();
-
 }
 
 function setStats() {
@@ -54,6 +59,9 @@ function setStats() {
     table.querySelector("#premiumDownloads").innerHTML = setCommas(premiumDownloads);
     table.querySelector("#downloadRatio").innerHTML = downloadRatio;
     table.querySelector("#totalRatings").innerHTML = setCommas(ratings);
+    let querySelector = table.querySelector("#averageRating");
+    querySelector.innerHTML = (avgRating / ratedResources).toFixed(2) + " ";
+    appendStars(querySelector, avgRating / ratedResources);
     document.getElementById("progressBarInner").style.width = (1 - ((pageCount - loadedPages) / pageCount)) * 100 + '%';
 }
 

@@ -1,27 +1,28 @@
 const statsTable =
     `<style type="text/css">
-        table {
+        #authorStatsTable {
             font-family: "Droid Sans", Arial, sans-serif;
             width: 100%;
         }
         
-        table tr:first-child {
+        #authorStatsTable tr:first-child {
             background-image: linear-gradient(#f4a03c, #f38918);
             text-shadow: 2px 2px #bfbfbf;
             color: #FFFFFF;
         } 
+        
+        #authorStatsTable tr:nth-child(even) {
+            background: #CCCCCC;
+            font-weight: bold;
+        }
 
-        td, th {
+        #authorStatsTable td, th {
             border: 1px solid #dddddd;
             padding: 8px;
         }
         
         #author {
             font-size: 26px;
-            font-weight: bold;
-        }
-        
-        #boldRow {
             font-weight: bold;
         }
         
@@ -36,19 +37,18 @@ const statsTable =
             background-color: #008000;
         }
     </style>
-    <table>
+    <table id="authorStatsTable">
         <tr>
-            <td id="author" colspan="6" align="center"><b></b></td>
+            <td id="author" colspan="7" align="center"><b></b></td>
         </tr>
-        <tr id="boldRow">
+        <tr>
             <td>Total Resources</td>
             <td>Total Downloads</td>
             <td>Normal Downloads</td>
             <td>Premium Downloads</td>
             <td>Download Ratio</td>
             <td>Total Ratings</td>
-            <!--<td>Total 5-Star Ratings</td>
-            <td>Average Rating</td>-->
+            <td>Average Rating</td>
         </tr>
         <tr>
             <td id="totalResources">loading...</td>
@@ -57,8 +57,7 @@ const statsTable =
             <td id="premiumDownloads">loading...</td>
             <td id="downloadRatio">loading...</td>
             <td id="totalRatings">loading...</td>
-            <!--<td id="total5Ratings">loading...</td>
-            <td id="averageRating">loading...</td>-->
+            <td id="averageRating">loading...</td>
         </tr>
     </table>
     <div id="progressBar">

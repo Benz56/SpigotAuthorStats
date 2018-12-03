@@ -8,7 +8,8 @@ table.querySelector("#author").innerHTML = isProfilePage ? document.querySelecto
 let isLoaded = false;
 if (isProfilePage) {
     document.querySelectorAll(".Tabs li").forEach(value => {
-        value.addEventListener("mouseup", function () {
+        value.addEventListener("mouseup", function (e) {
+            if (e.button !== 0) return;
             if (value.textContent === "Resources") {
                 if (isLoaded) return;
                 isLoaded = true;

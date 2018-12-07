@@ -25,5 +25,8 @@ if (isProfilePage) {
     })
 } else {
     element.prepend(table);
+    window.setTimeout(function () {
+        document.querySelector(".titleBar").remove();
+    }, 20);
     loadStats(isProfilePage);
 }

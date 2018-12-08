@@ -1,6 +1,6 @@
 {
   "name": "Spigot Author Stats",
-  "version": "1.3.3",
+  "version": "1.3.5",
   "description": "Displays information about Spigot authors resource statistics on their resource- and profile page.",
   "permissions": [
     "https://www.spigotmc.org/*"

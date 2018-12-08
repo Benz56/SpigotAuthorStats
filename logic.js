@@ -41,7 +41,8 @@ function scanPage(pageHTML) {
             premiumDownloads += downloads;
         } else normalDownloads += downloads;
 
-        downloadRatio = "1 to " + (normalDownloads / premiumDownloads).toFixed(2) + " (" + ((1 - ((normalDownloads - premiumDownloads) / normalDownloads)) * 100).toFixed(2) + "%)";
+        let ratio = (normalDownloads / premiumDownloads).toFixed(2);
+        downloadRatio = "1 to " + (ratio.includes("Infinity") ? 0 : ratio) + " (" + ((1 - ((normalDownloads - premiumDownloads) / normalDownloads)) * 100).toFixed(2) + "%)";
 
         let resourceRatings = parseInt(resource.querySelector(".Hint").textContent.split(" ")[0].replace(",", ""));
         ratedResources += resourceRatings === 0 ? 0 : 1;

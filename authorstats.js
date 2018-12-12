@@ -7,6 +7,7 @@ table.querySelector("#author").innerHTML = isProfilePage ? document.querySelecto
 
 let isLoaded = false;
 if (isProfilePage) {
+    table.style.marginLeft = "20px";
     document.querySelectorAll(".Tabs li").forEach(value => {
         value.addEventListener("mouseup", function (e) {
             if (e.button !== 0) return;

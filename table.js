@@ -3,6 +3,7 @@ const statsTable =
         #authorStatsTable {
             font-family: "Droid Sans", Arial, sans-serif;
             width: 100%;
+            border-collapse: separate !important;
         }
         
         #authorStatsTable tr:first-child {
@@ -16,10 +17,14 @@ const statsTable =
             font-weight: bold;
         }
 
-        #authorStatsTable td, th {
+        #authorStatsTable td {
             border: 1px solid #dddddd;
             padding: 8px;
         }
+
+         #authorStatsTable td#author {
+            border-radius: 6px 6px 0 0;
+         }
         
         #author {
             font-size: 26px;

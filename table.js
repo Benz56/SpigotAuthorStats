@@ -4,6 +4,7 @@ const statsTable =
             font-family: "Droid Sans", Arial, sans-serif;
             width: 100%;
             border-collapse: separate !important;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.3);
         }
         
         #authorStatsTable tr:first-child {
@@ -33,7 +34,7 @@ const statsTable =
         
         #progressBar {
             width: 100%;
-            background-color: #dddddd;
+            background-color: #ffffff;
         }
         
         #progressBarInner {

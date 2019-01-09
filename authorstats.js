@@ -25,9 +25,11 @@ if (isProfilePage) {
         })
     })
 } else {
-    element.prepend(table);
-    window.setTimeout(function () {
-        document.querySelector(".titleBar").remove();
-    }, 20);
-    loadStats(isProfilePage);
+    if (!window.location.href.includes("page") || window.location.href.includes("page=1")) {
+        element.prepend(table);
+        window.setTimeout(function () {
+            document.querySelector(".titleBar").remove();
+        }, 20);
+        loadStats(isProfilePage);
+    }
 }

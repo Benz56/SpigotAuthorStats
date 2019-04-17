@@ -35,9 +35,7 @@ if (isProfilePage) {
     replaceStars();
     if (!window.location.href.includes("page") || window.location.href.includes("page=1")) {
         element.prepend(table);
-        window.setTimeout(function () {
-            document.querySelector(".titleBar").remove();
-        }, 20);
+        document.querySelector(".titleBar").style.display = "none";
         loadStats(isProfilePage);
     }
 }

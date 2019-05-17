@@ -32,7 +32,7 @@ function scanPage(pageHTML) {
     const resources = pageHTML.querySelectorAll(".resourceListItem");
     for (let i = 0; i < resources.length; i++) {
         let resource = resources[i];
-        let downloads = parseInt(resource.querySelector(".resourceDownloads").textContent.split(" ")[1].replace(",", ""));
+        let downloads = parseInt(resource.querySelector(".resourceDownloads").textContent.split(" ")[1].replace(/,/g, ""));
         let premium = resource.querySelector(".cost") != null;
         totalDownloads += downloads;
 
